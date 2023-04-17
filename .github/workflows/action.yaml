@@ -12,7 +12,5 @@ jobs:
         - uses: acifani/setup-tinygo@v1
           with:
             tinygo-version: 0.27.0
-        - run: |
-            pip install yq
-            BUILDCMD=$(cat spin.toml | tomlq -r '.component[0].build.command')
-            eval $BUILDCMD
+        - run: pip install yq
+        - run: BUILDCMD=$(cat spin.toml | tomlq -r '.component[0].build.command') && eval $BUILDCMD
